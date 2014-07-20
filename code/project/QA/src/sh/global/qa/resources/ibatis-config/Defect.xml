@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<typeAlias alias="DefectCategory" type="sh.global.qa.bean.defect.DefectCategoryBean" />
+	<resultMap id="DefectCategoryBeanResult" class="DefectCategory">
+		<!-- result元素里的property是对应po中的属性 column是对应数据库中的列名。 -->
+	   	<result column="CATEGORY_ID" property="category_id" />
+	   	<result column="NAME" property="name" />
+	   	<result column="DESCRIPTION" property="description" />
+	</resultMap>
+	<typeAlias alias="Defect" type="sh.global.qa.bean.defect.DefectBean" />
+	<resultMap id="DefectBeanResult" class="Defect">
+		<!-- result元素里的property是对应po中的属性 column是对应数据库中的列名。 -->
+	   	<result column="DEFECT_ID" property="defect_id" />
+	   	<result column="NAME" property="name" />
+	   	<result column="CATEGORY_ID" property="category_id" />
+	   	<result column="DESCRIPTION" property="description" />
+	</resultMap>
+	<typeAlias alias="Measure" type="sh.global.qa.bean.defect.MeasureBean" />
+	<resultMap id="MeasureBeanResult" class="Measure">
+		<!-- result元素里的property是对应po中的属性 column是对应数据库中的列名。 -->
+	   	<result column="MEASURE_ID" property="measure_id" />
+	   	<result column="DEFECT_ID" property="defect_id" />
+	   	<result column="DESCRIPTION" property="description" />
+	</resultMap>
+	<select id="getDefectByDefectId" resultMap="DefectBeanResult">
+		<![CDATA[
+			SELECT * 
+			FROM DEFECT
+			WHERE DEFECT_ID=#defect_id#
+		]]>
+	</select>
+	<select id="getMeasuresByDefectId" resultMap="MeasureBeanResult">
+		<![CDATA[
+			SELECT * 
+			FROM MEASURE
+			WHERE DEFECT_ID=#defect_id#
+		]]>
+	</select>
+	<select id="getDefectCategoryByCategoryId" resultMap="DefectCategoryBeanResult">
+		<![CDATA[
+			SELECT * 
+			FROM DEFECT_CATEGORY
+			WHERE CATEGORY_ID=#category_id#
+		]]>
+	</select>
+</sqlMap>

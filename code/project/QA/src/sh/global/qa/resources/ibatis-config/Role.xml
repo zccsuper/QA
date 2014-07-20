@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<typeAlias alias="Role" type="sh.global.qa.bean.RoleBean" />
+	<resultMap id="RoleBeanResult" class="Role">
+		<!-- result元素里的property是对应po中的属性 column是对应数据库中的列名。 -->
+	   	<result column="ID" property="id" />
+	   	<result column="NAME" property="name" />
+	</resultMap>
+	<select id="getAllRoles" resultMap="RoleBeanResult">
+		<![CDATA[
+			SELECT * 
+			FROM ROLE
+		]]>
+	</select>
+</sqlMap>

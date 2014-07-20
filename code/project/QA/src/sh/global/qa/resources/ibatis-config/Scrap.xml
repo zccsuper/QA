@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<typeAlias alias="Scrap" type="sh.global.qa.bean.ScrapBean" />
+	<resultMap id="ScrapBeanResult" class="Scrap">
+		<!-- result元素里的property是对应po中的属性 column是对应数据库中的列名。 -->
+	   	<result column="ORDER_ID" property="order_id" />
+	   	<result column="PO_NO" property="po_no" />
+	   	<result column="PART_NO" property="part_no" />
+	   	<result column="PART_REV" property="part_rev" />
+	   	<result column="QUANTITY" property="quantity" />
+	   	<result column="PIC_ID" property="PIC_id" />
+	   	<result column="DESCRIPTION" property="description" />
+	   	<result column="MEASURE" property="measure" />
+	   	<result column="TYPE" property="type" />
+	   	<result column="COOPERATOR_ID" property="cooperator_id" />
+	   	<result column="CR_DATE" property="cr_date" />
+	   	<result column="CREATOR_ID" property="creator_id" />
+	</resultMap>
+	<select id="getScrapByOrderId" resultMap="ScrapBeanResult">
+		<![CDATA[
+			SELECT * 
+			FROM SCRAP
+			WHERE ORDER_ID=#order_id#
+		]]>
+	</select>
+</sqlMap>
